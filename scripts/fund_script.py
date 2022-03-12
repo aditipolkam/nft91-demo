@@ -18,7 +18,3 @@ def withdraw():
     account = get_account(owner=True)
     print("Withdrawing balance.....")
     nft91.withdraw({"from": account})
-
-
-def main():
-    withdraw()

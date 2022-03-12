@@ -9,6 +9,12 @@ from scripts.opensea_deploy import deploy_opensea
 def create_token():
     nft91 = NFT91[-1]
     tokenId = nft91.tokenCounter()
+    print(tokenId)
+    account = get_account()
+    token_listing_fee()
+
+    nft91.createToken({"from": account})
+
     tokenName = "demo token".replace(" ", "")  # input("Enter the token name: ")
     desc = "This is a demo token"  # input("Enter the token description: ")
     fileLocation = "img/wday.jpg"  # (input("Enter the file location: "))
@@ -20,13 +26,6 @@ def create_token():
 
     tokenURI = upload_to_ipfs(metadata_file)
     deploy_opensea(tokenId, tokenURI)
-
-    account = get_account()
-
-    nft91 = NFT91[-1]
-    token_listing_fee()
-
-    nft91.createToken({"from": account})
 
 
 def main():

@@ -7,7 +7,7 @@ OPENSEA_URL = "https://testnets.opensea.io/assets/{}/{}"
 
 def deploy_opensea(tokenId, tokenURI):
     nft91 = NFT91[-1]
-    account = get_account(owner=True)
+    account = get_account()
     tx = nft91.setTokenURI(tokenId, tokenURI, {"from": account})
     tx.wait(1)
-    print(f"View your NFT at {OPENSEA_URL.format(nft91.address),tokenId}")
+    print(f"View your NFT at {OPENSEA_URL.format(nft91.address,tokenId)}")

@@ -33,10 +33,6 @@ contract NFT91 is ERC721 {
     }
 
     function setTokenURI(uint256 tokenId, string memory tokenURI) public {
-        require(
-            _isApprovedOrOwner(_msgSender(), tokenId),
-            "Only approved or owner can set token URI"
-        );
         _setTokenURI(tokenId, tokenURI);
     }
 
