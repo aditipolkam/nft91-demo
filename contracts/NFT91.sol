@@ -10,6 +10,11 @@ contract NFT91 is ERC721 {
     mapping(uint256 => address) public tokenIdToOwner;
     event ownerMapped(uint256 indexed tokenId, address indexed owner);
 
+    modifier onlyOwner() {
+        require(msg.sender == contractOwner);
+        _;
+    }
+
     constructor() public ERC721("NFT91", "nft91") {
         contractOwner = msg.sender;
         tokenCounter = 0;
@@ -33,5 +38,9 @@ contract NFT91 is ERC721 {
             "Only approved or owner can set token URI"
         );
         _setTokenURI(tokenId, tokenURI);
+    }
+
+    function withdraw() public payable onlyOwner {
+        msg.sender.transfer(address(this).balance);
     }
 }

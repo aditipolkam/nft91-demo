@@ -10,6 +10,7 @@ dotenv: .env
 
 wallets:
   "from_key": ${PRIVATE_KEY}
+  "from_owner": ${OWNER_PRIVATE_KEY}
 
 networks:
   development:

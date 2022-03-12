@@ -4,7 +4,9 @@ from web3 import Web3
 LOCAL_BLOCKCHAIN_ENVIRONMENTS = ["ganache", "mainnet-fork", "development"]
 
 
-def get_account(index=0, id=None):
+def get_account(index=0, id=None, owner=False):
+    if owner:
+        return accounts.add(config["wallets"]["from_owner"])
     if index:
         return accounts[index]
     if network.show_active() in LOCAL_BLOCKCHAIN_ENVIRONMENTS:
@@ -14,5 +16,3 @@ def get_account(index=0, id=None):
     if network.show_active() in config["networks"]:
         return accounts.add(config["wallets"]["from_key"])
     return None
-
-
