@@ -11,5 +11,3 @@ def main():
     tx1 = nft91.createToken({"from": get_account()})
     tx1.wait(1)
     print("Token 0 created")
-
-    withdraw()

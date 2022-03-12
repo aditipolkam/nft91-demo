@@ -2,20 +2,31 @@ from brownie import NFT91
 from scripts.help_script import get_account
 from scripts.ipfs_upload import upload_to_ipfs
 from scripts.fund_script import token_listing_fee
+from scripts.create_metadata import create_metadata
+from scripts.opensea_deploy import deploy_opensea
 
 
 def create_token():
-    tokenName = "demo token"  # input("Enter the token name: ")
-    fileLocation = "./img/wday.jpg"  # (input("Enter the file location: "))
+    nft91 = NFT91[-1]
+    tokenId = nft91.tokenCounter()
+    tokenName = "demo token".replace(" ", "")  # input("Enter the token name: ")
+    desc = "This is a demo token"  # input("Enter the token description: ")
+    fileLocation = "img/wday.jpg"  # (input("Enter the file location: "))
     listingPrice = 1  # int(input("Enter the listing price: "))
-    tokenURI = upload_to_ipfs(fileLocation)
+
+    metadata_file = create_metadata(
+        tokenId, tokenName, desc, fileLocation, listingPrice, get_account()
+    )
+
+    tokenURI = upload_to_ipfs(metadata_file)
+    deploy_opensea(tokenId, tokenURI)
 
     account = get_account()
 
     nft91 = NFT91[-1]
     token_listing_fee()
 
-    # nft91.createToken(tokenName, tokenURI, listingPrice, {"from": account})
+    nft91.createToken({"from": account})
 
 
 def main():
