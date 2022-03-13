@@ -14,8 +14,8 @@ def create_metadata(tokenId, name, description, image, price, owner):
     token_metadata["name"] = name
     token_metadata["description"] = description
     token_metadata["image"] = img_uri
-    token_metadata["price"] = price
-    token_metadata["owner"] = str(owner)
+    # token_metadata["price"] = price
+    # token_metadata["owner"] = str(owner)
 
     with open(metadata_filename, "w") as f:
         json.dump(token_metadata, f)

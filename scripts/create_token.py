@@ -17,7 +17,7 @@ def create_token():
 
     tokenName = "demo token".replace(" ", "")  # input("Enter the token name: ")
     desc = "This is a demo token"  # input("Enter the token description: ")
-    fileLocation = "img/wday.jpg"  # (input("Enter the file location: "))
+    fileLocation = "img/pug.png"  # (input("Enter the file location: "))
     listingPrice = 1  # int(input("Enter the listing price: "))
 
     metadata_file = create_metadata(
