@@ -15,9 +15,15 @@ def create_token():
 
     nft91.createToken({"from": account})
 
-    tokenName = "demo token".replace(" ", "")  # input("Enter the token name: ")
-    desc = "This is a demo token"  # input("Enter the token description: ")
-    fileLocation = "img/pug.png"  # (input("Enter the file location: "))
+    tokenName = input("Enter the token name: ").replace(
+        " ", ""
+    )  # input("Enter the token name: ")
+    desc = input(
+        "Enter the token description: "
+    )  # input("Enter the token description: ")
+    fileLocation = input(
+        "Enter the file location: "
+    )  # (input("Enter the file location: ")) img/pug.png
     listingPrice = 1  # int(input("Enter the listing price: "))
 
     metadata_file = create_metadata(
